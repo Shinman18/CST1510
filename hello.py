@@ -1,0 +1,1 @@
+print ("Hello from cst1510")
