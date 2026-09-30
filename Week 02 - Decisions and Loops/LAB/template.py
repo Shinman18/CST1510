@@ -2,9 +2,9 @@
 RECORD CHECK  -  my version
 ===========================
 
-Name  :
-Lane  :  AI / Cyber / IT      (delete two)
-Date  :
+Name  : Shinay Mehangra
+Lane  :  Cyber      (delete two)
+Date  : 30/09/26
 
 Run it:   python template.py
 
@@ -19,23 +19,28 @@ Delete these instructions as you replace them with your code.
 #    - the second is a NUMBER (use float(), not int())
 #    - the third  is a NUMBER (use float(), not int())
 
-label = ""      # replace with an input() call
-value = 0.0     # replace with an input() call, converted with float()
-limit = 0.0     # replace with an input() call, converted with float()
+hostname = input("Input your hostname. ")           # replace with an input() call
+gb_used = float(input("How much GB have you used? "))    # replace with an input() call, converted with float()
+gb_total = float(input("How much GB is there in total? "))    # replace with an input() call, converted with float()
 
 
 # ================================================================== PROCESS
 # 2. Work out the difference and the percentage.       [Typical and above]
 
-difference = 0.0   # replace with your calculation
-percent = 0.0       # replace with your calculation
+difference = gb_total - gb_used   # replace with your calculation
+percent = (gb_used / gb_total) * 100     # replace with your calculation
 # 3. Decide a status and store it in a variable called status.
 #
 #    Threshold : if / else        -> "OVER LIMIT" or "OK"
 #    Typical   : if / elif / else -> "OVER LIMIT" (100% or more),
 #                                     "WARNING" (90% or more), otherwise "OK"
 
-status = ""   # replace with your if / else (or if / elif / else)
+if percent >= 100:
+    status = "OVER LIMIT"
+elif percent >= 90:
+    status = "WARNING"
+else:
+    status = "OK"   # replace with your if / else (or if / elif / else)
 
 
 # =================================================================== OUTPUT
@@ -50,11 +55,15 @@ status = ""   # replace with your if / else (or if / elif / else)
 
 print()
 print("=" * 34)
-print(f"  RECORD CHECK  -  {label}")
+print(f"  RECORD CHECK  -  {hostname}")
 print("=" * 34)
 
 # your report lines go here
-
+print(f"Used : {gb_used:>10.2f} GB")
+print(f"Total : {gb_total:>10.2f} GB")
+print(f"Free : {difference:>10.2f} GB")
+print(f"Percent : {percent:>10.2f}%")
+print(f"{status:>10}")
 print("=" * 34)
 
 
